@@ -38,3 +38,10 @@ models:
 
 vars:
   date: '2024-05-29'
+
+
+packages:
+  - package: dbt-labs/dbt_utils
+    version: 0.7.0
+
+# source dbt-env/bin/activate
