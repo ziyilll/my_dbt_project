@@ -86,7 +86,7 @@ select
             then 1
             else 0
         end as is_finish,
-        
+        --- 121
         case when provider_names in ('USPS') then
             {{ calculate_trace_ontime_node_cnt(usps_pairs, false) }}
         when provider_names in ('Amazon Logistics') then
@@ -94,7 +94,7 @@ select
         else
             {{ calculate_trace_ontime_node_cnt(ts_pairs, false) }}
         end as trace_ontime_node_cnt,
-        
+        ---157 
         case when provider_names in ('USPS') then
             {{ calculate_trace_ontime_node_cnt_fail(usps_pairs, false) }}
         when provider_names in ('Amazon Logistics') then
@@ -102,7 +102,7 @@ select
         else
             {{ calculate_trace_ontime_node_cnt_fail(ts_pairs, false) }}
         end as trace_ontime_node_cnt_fail,
-        
+        ---193
         case when provider_names in ('USPS') then
             {{ calculate_trace_ontime_node_cnt_fail_seller(usps_pairs) }}
         when provider_names in ('Amazon Logistics') then
@@ -110,7 +110,7 @@ select
         else
             {{ calculate_trace_ontime_node_cnt_fail_seller(ts_pairs) }}
         end as trace_ontime_node_cnt_fail_seller,
-        
+        ---216
         case when provider_names in ('USPS') then
             {{ calculate_trace_back_node_cnt(usps_pairs, false) }}
         when provider_names in ('Amazon Logistics') then
@@ -193,7 +193,7 @@ select
     left join order_dims b
         on a.package_id = b.package_id
     where
-        date = '{{ date }}'
+        date = '${date}'
         and logistics_type = 1 -- forward logistics
         and is_test = 0
         and biz_source <> 2 -- sample orders

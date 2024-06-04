@@ -3,7 +3,7 @@
         {% if condition %}
             if(({{ pair[0] }} - {{ pair[1] }}) / 3600 <= 2 AND send_time - {{ pair[1] }} < 0, 1, 0) +
         {% else %}
-            if(({{ pair[0] }} - {{ pair[1] }}) / 3600 <= 2 +
+            if(({{ pair[0] }} - {{ pair[1] }}) / 3600 <= 2, 1, 0) +
         {% endif %}
     {% endfor %}
     0
@@ -14,7 +14,7 @@
         {% if condition %}
             if(({{ pair[0] }} - {{ pair[1] }}) / 3600 > 2 AND send_time - {{ pair[1] }} < 0, 1, 0) +
         {% else %}
-            if({{ pair[0] }} - {{ pair[1] }}) / 3600 > 2, 1, 0 +
+            if(({{ pair[0] }} - {{ pair[1] }}) / 3600 > 2, 1, 0) +
         {% endif %}
     {% endfor %}
     0
@@ -39,6 +39,7 @@
     {% endfor %}
     0
 {% endmacro %}
+
 
 {% macro calculate_tx_field(condition, true_value, false_value, field_name) %}
     IF(
