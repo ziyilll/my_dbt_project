@@ -15,5 +15,5 @@ SELECT
     FROM ecom.app_order_product_reviews_info_df_ttp2va_fordes t1
     LEFT JOIN pkg_dtl_main_order t2
         ON t1.main_order_id = t2.main_order_id
-    WHERE t1.date = '{{ date }}'
+    WHERE t1.date = '${date}'
       AND NOT (t1.seller_type_name = 'Crossborder' AND t1.shipment_wh_sub_type != 2)

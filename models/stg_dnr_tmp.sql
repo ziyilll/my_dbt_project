@@ -12,7 +12,7 @@ SELECT
     NULL AS top_review_v3_lv3_label,
     is_refund_success
 FROM ecom.dm_lgt_omnichannel_enquiry_day_ttp2va_fordes
-WHERE date = '{{ date }}'
+WHERE date = '${date}'
   AND (LCASE(level3_label_name) IN (
             'delivered but not received arbitration',
             'delivered but not received',
@@ -41,6 +41,6 @@ SELECT
     top_review_v3_lv3_label,
     NULL AS is_refund_success
 FROM ecom.app_order_product_reviews_info_df_ttp2va_fordes
-WHERE date = '{{ date }}'
+WHERE date = '${date}'
   AND is_negative_review_t_x = 1
   AND top_review_v3_lv3_label IN ('Not received', 'WrongAddress')
